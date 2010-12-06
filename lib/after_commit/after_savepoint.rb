@@ -74,7 +74,7 @@ module AfterCommit
           increment_transaction_pointer
           begin
             trigger_before_rollback_callbacks
-            rollback_to_savepoint_without_callback
+            rollback_to_savepoint_without_callback rescue nil
             trigger_after_rollback_callbacks
           ensure
             AfterCommit.cleanup(self)
